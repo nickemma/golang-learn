@@ -22,36 +22,39 @@ import "fmt"
 // Create a shopping list array with enough room for 4 or more products
 type ShoppingList struct {
 	//  - Products must include the price and the name
+	price int
 	name  string
-	price float64
 }
 
-func main() {
-	// Insert 3 products into the array
-	products := [4]ShoppingList{
-		{name: "Milk", price: 2.50},
-		{name: "Eggs", price: 1.50},
-		{name: "Bread", price: 1.00},
-	}
+func productStat(list [4]ShoppingList) {
+	var totalCost, totalItems int
 
-	fmt.Println("The last item on the list: ", products[len(products)-2].name)
-	fmt.Println("The total number of items: ", len(products))
+	for i := 0; i < len(list); i++ {
+		item := list[i]
+		totalCost += item.price
 
-	// The total cost of the items
-	totalCost := 0.0
-	for i := 0; i < len(products); i++ {
-		totalCost += products[i].price
+		// Insert 3 products into the array
+		if item.name != "" {
+			totalItems++
+		}
 	}
+	fmt.Println("The last item on the list: ", list[totalItems-1].name)
+	fmt.Println("The total number of items: ", totalItems)
 	fmt.Println("The total cost of the items: ", totalCost)
+}
+func main() {
+	// Add a fourth product to the list
+	products := [4]ShoppingList{
+		{price: 10, name: "Milk"},
+		{price: 20, name: "Eggs"},
+		{price: 30, name: "Bread"},
+	}
+	productStat(products)
 
 	// Add a fourth product to the list
-	products[3] = ShoppingList{name: "coffee", price: 1.25}
-
-	// Recalculate the total cost of the items after adding the fourth product
-	totalCost += products[3].price
+	products[3] = ShoppingList{price: 40, name: "Butter"}
 
 	// Print out the information again
-	fmt.Println("The last item on the list: ", products[len(products)-1].name)
-	fmt.Println("The total number of items: ", len(products))
-	fmt.Println("The total cost of the items: ", totalCost)
+	productStat(products)
+	fmt.Println("Done! All products checked.", products)
 }
