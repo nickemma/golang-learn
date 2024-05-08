@@ -104,7 +104,7 @@ func (lib *Library) CheckInBook(bookID int) {
 }
 
 func (lib *Library) PrintLibraryInfo() {
-	fmt.Println("Library Information:")
+	fmt.Println("\nLibrary Information:")
 	fmt.Println("Books:")
 	for _, book := range lib.Books {
 		fmt.Printf("- %s by %s\n", book.Title, book.Author)
@@ -114,7 +114,7 @@ func (lib *Library) PrintLibraryInfo() {
 			fmt.Println("  Checked Out: No")
 		}
 	}
-	fmt.Println("Members:")
+	fmt.Println("\nMembers:")
 	for _, member := range lib.Members {
 		fmt.Printf("- %s\n", member.Name)
 	}
@@ -143,6 +143,7 @@ func main() {
 
 	// Check out a book
 	lib.CheckOutBook(1, 1)
+	lib.CheckOutBook(2, 3)
 	lib.PrintLibraryInfo()
 
 	// Check in a book
