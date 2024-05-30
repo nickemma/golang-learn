@@ -50,7 +50,7 @@ func getWeapon(w Weapon) string {
 	return string(w)
 }
 
-func Builtin() {
+func builtin() {
 	player := Player{
 		name:        "C. Ronaldo",
 		health:      99,
