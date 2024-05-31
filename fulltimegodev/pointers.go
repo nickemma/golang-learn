@@ -11,7 +11,7 @@ func TakeDamage(p *Players, amount int) {
 	fmt.Println("Player is taking damage ->", p.HP)
 }
 
-func main() {
+func pointers() {
 	soccer := Players{
 		HP: 100,
 	}
